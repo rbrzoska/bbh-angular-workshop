@@ -1,5 +1,6 @@
-@import "variables";
-body {
-  color: red;
+@import '_variables.scss';
+
+body{
+  color: $red;
 }
 
