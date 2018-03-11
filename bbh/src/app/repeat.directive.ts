@@ -9,7 +9,6 @@ export class RepeatDirective {
 
   @Input()
   set appRepeatOf(num: number) {
-    console.log(num)
     this._pagesNumber = num;
     for(let i = 1; i < num;i++) {
       this.viewRef.createEmbeddedView(this.temp,{

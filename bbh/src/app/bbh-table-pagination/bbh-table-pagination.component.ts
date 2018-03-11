@@ -7,8 +7,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class BbhTablePaginationComponent implements OnInit {
 
-  @Input() pages: number;
+  totalPages: number;
+
+  @Input()
+  set totalItems(num: number){
+    this.totalPages = num % 5 + 1;
+  };
+
   @Output() onSelectPage = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {

@@ -1,5 +1,8 @@
-<app-bbh-table [products]="products"></app-bbh-table>
-<app-bbh-table-pagination
-  [pages]="pagesNumber"
-  (onSelectPage)="onSelectPage($event)">
-</app-bbh-table-pagination>
+<app-bbh-table [dataSource]="dataSource">
+  <app-bbh-table-column type="default" title="Id" property="id"></app-bbh-table-column>
+  <app-bbh-table-column type="default" title="Title" property="title"></app-bbh-table-column>
+  <app-bbh-table-column type="number" title="Price" property="price"></app-bbh-table-column>
+  <app-bbh-table-column type="custom" title="Actions">
+      <button *appBbhCustomColumn="let row" type="button" class="btn btn-primary sm">Edit {{row.id}}</button>
+  </app-bbh-table-column>
+</app-bbh-table>

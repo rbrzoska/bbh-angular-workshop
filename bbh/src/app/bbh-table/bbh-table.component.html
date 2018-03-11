@@ -2,20 +2,25 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Quantity</th>
+    <th *ngFor="let column of columns">{{column.title}}</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of products">
-    <td>{{product.id}}</td>
-    <td>{{product.title}}</td>
-    <td>{{product.description}}</td>
-    <td>{{product.price}}</td>
-    <td>{{product.quantity}}</td>
+  <tr *ngFor="let row of page?.data; let i = index" appTableRowSelect [tabindex]="i">
+    <td *ngFor="let column of columns">
+      <ng-container [ngSwitch]="column.type">
+        <ng-container *ngSwitchCase="'default'">{{row[column.property]}}</ng-container>
+        <ng-container *ngSwitchCase="'number'">{{row[column.property] | vat}}</ng-container>
+        <ng-container *ngSwitchCase="'custom'">
+          <ng-container *ngTemplateOutlet="column.customColumnTemplate; context: {$implicit: row}"></ng-container>
+        </ng-container>
+      </ng-container>
+    </td>
   </tr>
   </tbody>
 </table>
+
+<app-bbh-table-pagination
+  [totalItems]="page?.total"
+  (onSelectPage)="pageChange($event)">
+</app-bbh-table-pagination>

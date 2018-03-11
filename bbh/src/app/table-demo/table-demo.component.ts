@@ -1,32 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
+import { Component } from '@angular/core';
 import { Product } from '../product';
+import { DataTableService } from '../data-table.service';
+import { DataTableSource } from '../data-table-source';
 
 @Component({
   selector: 'app-table-demo',
   templateUrl: './table-demo.component.html',
   styles: []
 })
-export class TableDemoComponent implements OnInit {
+export class TableDemoComponent {
 
-  products: Product[] = [];
-  total: number;
-  pagesNumber = 0;
-  constructor(private productsService: ProductsService) { }
+  dataSource = new DataTableSource<Product>(this.ts, '/products' );
 
-  ngOnInit() {
-    this.refreshData(1);
-  }
+  constructor(private ts: DataTableService) { }
 
-  onSelectPage(page) {
-    this.refreshData(page);
-  }
-
-  refreshData(page: number) {
-    this.productsService.getProducts(page).subscribe(p => {
-      this.products = p.body;
-      this.total = parseInt(p.headers.get('X-Total-Count'));
-      this.pagesNumber = this.total % 5 + 1;
-    });
-  }
 }
