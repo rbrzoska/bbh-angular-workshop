@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
+import { ProductsService } from './products.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './table/table.component';
+import { TableDemoComponent } from './table-demo/table-demo.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'contact', component: ContactComponent},
+  {path: 'table-demo', component: TableDemoComponent},
   {path: '**', redirectTo: '/'}
 ];
 
@@ -17,13 +22,16 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    TableComponent,
+    TableDemoComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
