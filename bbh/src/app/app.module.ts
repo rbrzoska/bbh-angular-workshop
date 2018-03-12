@@ -10,6 +10,8 @@ import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './table/table.component';
 import { TableDemoComponent } from './table-demo/table-demo.component';
+import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
+import { RepeatDirective } from './repeat.directive';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -24,7 +26,9 @@ const routes: Routes = [
     HomeComponent,
     ContactComponent,
     TableComponent,
-    TableDemoComponent
+    TableDemoComponent,
+    TablePaginatorComponent,
+    RepeatDirective
   ],
   imports: [
     BrowserModule,
