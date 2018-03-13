@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
     <a routerLink="/table-demo">Table</a>
     <router-outlet></router-outlet>
     <bbh-test>
-      <bbh-test-child></bbh-test-child>
-      <bbh-test-child></bbh-test-child>
+      <h1>Header title</h1>
+      <p class="par">Paragraph</p>
+      <p class="par">Paragraph</p>
+      <p class="par">Paragraph</p>
     </bbh-test>
     
   `,

@@ -15,6 +15,7 @@ import { RepeatDirective } from './repeat.directive';
 import { TableDataService } from './table-data.service';
 import { TestComponent } from './test/test.component';
 import { TestChildComponent } from './test-child/test-child.component';
+import { ColumnComponent } from './column/column.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -33,7 +34,8 @@ const routes: Routes = [
     TablePaginatorComponent,
     RepeatDirective,
     TestComponent,
-    TestChildComponent
+    TestChildComponent,
+    ColumnComponent
   ],
   imports: [
     BrowserModule,

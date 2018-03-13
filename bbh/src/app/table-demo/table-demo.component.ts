@@ -4,35 +4,23 @@ import { Observable } from 'rxjs/Observable';
 import { Product } from '../Product';
 import { map, share } from 'rxjs/operators';
 import { TableDataService } from '../table-data.service';
+import { TableDataSource } from '../table-data-source';
 
 @Component({
   selector: 'bbh-table-demo',
   template: `
-    <bbh-table [products]="products$ | async"></bbh-table>
-    <bbh-table-paginator 
-      [pages]="pages" 
-      (onChangePage)="handleChangePage($event)"></bbh-table-paginator>
+    <bbh-table [dataSource]="productDataSource">
+      <bbh-column title="Id" property="id"></bbh-column>
+      <bbh-column title="Title" property="title"></bbh-column>
+    </bbh-table>
   `,
   styles: []
 })
-export class TableDemoComponent implements OnInit {
+export class TableDemoComponent {
 
+  productDataSource: TableDataSource<Product>;
   pages: number;
-  products$: Observable<Product[]>;
-  constructor(private dataService: TableDataService) { }
-
-  ngOnInit() {
-    this.handleChangePage(1)
+  constructor(private dataService: TableDataService) {
+    this.productDataSource = new TableDataSource<Product>(dataService, '/products');
   }
-
-  handleChangePage(page: number) {
-    this.products$ = this.dataService.getData<Product>('/products',page).pipe(
-      map(res => {
-        this.pages = Math.ceil(parseInt(res.headers.get('X-Total-Count')) / 5);
-        return res.body
-      }),
-      share()
-    )
-  }
-
 }
