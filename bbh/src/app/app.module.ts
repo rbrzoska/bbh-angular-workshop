@@ -12,6 +12,9 @@ import { TableComponent } from './table/table.component';
 import { TableDemoComponent } from './table-demo/table-demo.component';
 import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
 import { RepeatDirective } from './repeat.directive';
+import { TableDataService } from './table-data.service';
+import { TestComponent } from './test/test.component';
+import { TestChildComponent } from './test-child/test-child.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -28,14 +31,16 @@ const routes: Routes = [
     TableComponent,
     TableDemoComponent,
     TablePaginatorComponent,
-    RepeatDirective
+    RepeatDirective,
+    TestComponent,
+    TestChildComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [ProductsService],
+  providers: [TableDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

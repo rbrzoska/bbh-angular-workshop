@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Observable } from 'rxjs/Observable';
 import { Product } from '../Product';
-import 'rxjs/add/operator/share'
-import 'rxjs/add/operator/map'
+import { map, share } from 'rxjs/operators';
+import { TableDataService } from '../table-data.service';
 
 @Component({
   selector: 'bbh-table-demo',
@@ -19,19 +19,20 @@ export class TableDemoComponent implements OnInit {
 
   pages: number;
   products$: Observable<Product[]>;
-  constructor(private ps: ProductsService) { }
+  constructor(private dataService: TableDataService) { }
 
   ngOnInit() {
     this.handleChangePage(1)
   }
 
   handleChangePage(page: number) {
-    this.products$ = this.ps.getProducts(page)
-      .map(res => {
+    this.products$ = this.dataService.getData<Product>('/products',page).pipe(
+      map(res => {
         this.pages = Math.ceil(parseInt(res.headers.get('X-Total-Count')) / 5);
         return res.body
-      })
-      .share();
+      }),
+      share()
+    )
   }
 
 }

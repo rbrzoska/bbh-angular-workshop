@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
     <a routerLink="/contact">Contact</a>
     <a routerLink="/table-demo">Table</a>
     <router-outlet></router-outlet>
+    <bbh-test>
+      <bbh-test-child></bbh-test-child>
+      <bbh-test-child></bbh-test-child>
+    </bbh-test>
     
   `,
   styles: []
