@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
-import { Observable } from 'rxjs/Observable';
 import { Product } from '../Product';
-import { map, share } from 'rxjs/operators';
 import { TableDataService } from '../table-data.service';
 import { TableDataSource } from '../table-data-source';
 
@@ -12,8 +9,12 @@ import { TableDataSource } from '../table-data-source';
     <bbh-table [dataSource]="productDataSource">
       <bbh-column title="Id" property="id"></bbh-column>
       <bbh-column title="Title" property="title"></bbh-column>
+      <bbh-column title="Price" property="price" type="vat"></bbh-column>
+      <bbh-column title="Actions" property="" type="custom">
+        <button *customColumn="let item = item" (click)="getId(item.id)">Edit {{item.id}}</button>
+      </bbh-column>
     </bbh-table>
-  `,
+    `,
   styles: []
 })
 export class TableDemoComponent {
@@ -22,5 +23,8 @@ export class TableDemoComponent {
   pages: number;
   constructor(private dataService: TableDataService) {
     this.productDataSource = new TableDataSource<Product>(dataService, '/products');
+  }
+  getId(id: number) {
+    alert(id)
   }
 }

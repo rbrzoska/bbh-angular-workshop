@@ -1,12 +1,10 @@
 import {
   AfterContentInit,
-  AfterViewInit,
   Component,
   ContentChildren, ElementRef,
   OnInit,
-  QueryList, ViewChild,
-  ViewChild,
-  ViewChildren
+  QueryList,
+  ViewChild
 } from '@angular/core';
 import { TestChildComponent } from '../test-child/test-child.component';
 

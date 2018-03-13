@@ -4,10 +4,13 @@ import { Component, OnInit } from '@angular/core';
   selector: 'bbh-home',
   template: `
     <p>
-      home works!
+      {{9.97 | vat}}
+      {{11.16| vat}}
+    {{4.95| vat}}
     </p>
   `,
-  styles: []
+  styles: [],
+  providers:[]
 })
 export class HomeComponent implements OnInit {
 

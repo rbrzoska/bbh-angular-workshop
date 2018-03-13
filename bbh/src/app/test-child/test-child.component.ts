@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'bbh-test-child',
@@ -12,7 +13,6 @@ import { Component, OnInit } from '@angular/core';
 export class TestChildComponent implements OnInit {
 
   counter = 0;
-  constructor() { }
 
   ngOnInit() {
   }

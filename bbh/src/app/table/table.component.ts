@@ -8,7 +8,7 @@ import { Page } from '../page';
 
 @Component({
   selector: 'bbh-table',
-  template: `
+  template: `    
     <table class="table">
       <thead>
       <tr>
@@ -17,7 +17,17 @@ import { Page } from '../page';
       </thead>
       <tbody>
       <tr *ngFor="let item of (data | async)?.items">
-        <td *ngFor="let column of columns">{{item[column.property]}}</td>
+        <td *ngFor="let column of columns">
+          <ng-container [ngSwitch]="column.type">
+            <ng-container *ngSwitchCase="'vat'">{{item[column.property] | vat}}</ng-container>
+            <ng-container *ngSwitchCase="'custom'">
+              <ng-container *ngTemplateOutlet="column.customTemplate; context: {item: item}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchDefault>{{item[column.property]}}</ng-container>
+        </ng-container>
+        
+        
+        </td>
       </tr>
       </tbody>
     </table>
