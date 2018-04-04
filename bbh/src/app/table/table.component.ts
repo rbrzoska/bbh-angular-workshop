@@ -46,7 +46,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.dataSource.tableData;
-    console.log(this.data)
     this.dataSource.refresh();
   }
 
