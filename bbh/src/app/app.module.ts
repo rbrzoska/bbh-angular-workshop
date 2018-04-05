@@ -20,6 +20,8 @@ import { TableComponent } from './table/table.component';
 import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
 import { ContactComponent } from './contact/contact.component';
 import { TableDataService } from './table-data.service';
+import { NotificationsContainerComponent } from './notifications-container/notifications-container.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -42,7 +44,12 @@ const routes: Routes = [
     Comp1Component,
     Comp2Component,
     Comp3Component,
-    TableComponent, RepeatDirective, TablePaginatorComponent, VatPipe
+    TableComponent,
+    RepeatDirective,
+    TablePaginatorComponent,
+    VatPipe,
+    NotificationsContainerComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

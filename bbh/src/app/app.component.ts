@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
       <p class="par">Paragraph</p>
     </bbh-test>
     <bbh-comp1 [data]="data"></bbh-comp1>
+    <bbh-notifications-container></bbh-notifications-container>
   `,
   styles: []
 })
