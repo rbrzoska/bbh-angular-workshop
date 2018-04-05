@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Config, ConfigToken } from './tokens';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,15 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
+
+  constructor(@Inject(ConfigToken) private config: Config) {
+
+    console.log(config);
+    setTimeout(() => {
+      console.log(config);
+    })
+  }
+
   title = 'app';
   data = {
     prop1: 1,

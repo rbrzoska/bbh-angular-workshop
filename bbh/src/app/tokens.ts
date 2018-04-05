@@ -1,3 +1,11 @@
 import { InjectionToken } from '@angular/core';
 
-export const TOKEN = new InjectionToken('Token');
+export interface Config {
+  apiUrl: string;
+  delay: number;
+}
+export const ConfigToken = new InjectionToken<Config>('token')
+
+export abstract class BaseNotificationService {
+  pushMessage(msg: string) {}
+}

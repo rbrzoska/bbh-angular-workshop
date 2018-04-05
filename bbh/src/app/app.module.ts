@@ -22,6 +22,8 @@ import { ContactComponent } from './contact/contact.component';
 import { TableDataService } from './table-data.service';
 import { NotificationsContainerComponent } from './notifications-container/notifications-container.component';
 import { NotificationComponent } from './notification/notification.component';
+import { NotificationsService } from './notifications.service';
+import { BaseNotificationService, Config, ConfigToken } from './tokens';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -29,6 +31,15 @@ const routes: Routes = [
   {path: 'table-demo', component: TableDemoComponent},
   {path: '**', redirectTo: '/'}
 ];
+
+const myConf: Config = {
+  apiUrl: 'http://localhost:3000',
+  delay: 5000
+};
+const myConf2: Config = {
+  apiUrl: 'http://localhost:5000',
+  delay: 1000
+};
 
 @NgModule({
   declarations: [
@@ -56,7 +67,14 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [TableDataService],
+  providers: [
+    {provide: TableDataService, useClass: TableDataService},
+    {provide: ConfigToken, useValue: myConf, multi: true},
+    {provide: ConfigToken, useValue: myConf2, multi: true},
+    NotificationsService,
+    {provide: 'token', useExisting: NotificationsService},
+    {provide: BaseNotificationService, useExisting: NotificationsService}
+    ],
   bootstrap: [AppComponent],
   entryComponents: [NotificationComponent]
 })

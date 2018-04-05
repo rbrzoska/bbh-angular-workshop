@@ -8,14 +8,12 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { NotificationComponent } from '../notification/notification.component';
+import { NotificationsService } from '../notifications.service';
 
 @Component({
   selector: 'bbh-notifications-container',
   template: `
     <ng-template #notificationContainer></ng-template>
-    <button 
-      (click)="createNotification()"
-      class="btn btn-warning">Push Notification</button>
   `,
   styles: [`:host {
     position: fixed;
@@ -31,23 +29,32 @@ export class NotificationsContainerComponent implements OnInit, AfterViewInit {
   notificationContainer: ViewContainerRef;
 
   notificationFactory: ComponentFactory<NotificationComponent>
-  constructor( private cfr: ComponentFactoryResolver) {
+  constructor( private cfr: ComponentFactoryResolver,
+               private notificationService: NotificationsService) {
     this.notificationFactory = this.cfr.resolveComponentFactory(NotificationComponent)
-
+    notificationService.getNotifications().subscribe((msg) => {
+      this.createNotification(msg);
+    })
   }
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit() {
     console.log(this.notificationContainer)
   }
 
-  createNotification(msg: string = 'hello') {
+  createNotification(msg: string = 'test') {
     const componentRef = this.notificationContainer.createComponent(this.notificationFactory)
+    componentRef.instance.message = msg;
+    componentRef.changeDetectorRef.detectChanges();
+    setTimeout(() => {
+      componentRef.instance.message = ":-)))))))";
+    }, 5000);
     setTimeout(() => {
       componentRef.destroy();
-    }, 5000)
+    }, 10000);
   }
 
 }

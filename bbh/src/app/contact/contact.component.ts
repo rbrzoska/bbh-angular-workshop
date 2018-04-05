@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional, SkipSelf } from '@angular/core';
+import { NotificationsService } from '../notifications.service';
+import { BaseNotificationService, Config, ConfigToken } from '../tokens';
 
 @Component({
   selector: 'bbh-contact',
@@ -6,14 +8,26 @@ import { Component, OnInit } from '@angular/core';
     <p>
       contact works!
     </p>
+
+    <bbh-notifications-container></bbh-notifications-container>
+    <button
+      (click)="createNotification()"
+      class="btn btn-warning">Push Notification</button>
   `,
   styles: []
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ns: BaseNotificationService,
+              @Inject(ConfigToken) private config: Config) {
+    config.delay = 1000;
+  }
 
   ngOnInit() {
+  }
+
+  createNotification() {
+    this.ns.pushMessage('hello')
   }
 
 }
