@@ -19,6 +19,7 @@ import { Comp3Component } from './comp3/comp3.component';
 import { TableComponent } from './table/table.component';
 import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
 import { ContactComponent } from './contact/contact.component';
+import { TableDataService } from './table-data.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -48,7 +49,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [TableDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
