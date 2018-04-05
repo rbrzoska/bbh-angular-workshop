@@ -289,5 +289,9 @@
       "login": "irure",
       "country": "AQ"
     }
-  ]
+  ],
+  "config": {
+    "language": "PL",
+    "currency": "PLN"
+  }
 }

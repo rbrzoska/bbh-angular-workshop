@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { InjectionToken, NgModule } from '@angular/core';
+import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TableDemoComponent } from './table-demo/table-demo.component';
 import { RepeatDirective } from './repeat.directive';
 import { TestComponent } from './test/test.component';
@@ -24,6 +24,9 @@ import { NotificationsContainerComponent } from './notifications-container/notif
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationsService } from './notifications.service';
 import { BaseNotificationService, Config, ConfigToken } from './tokens';
+import { BbhInterceptorService } from './bbh-interceptor.service';
+import { init } from 'protractor/built/launcher';
+import { ConfigService } from './config.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -40,6 +43,10 @@ const myConf2: Config = {
   apiUrl: 'http://localhost:5000',
   delay: 1000
 };
+
+export function initApp(configService: ConfigService) {
+  return () => configService.getAppConfig()
+}
 
 @NgModule({
   declarations: [
@@ -68,6 +75,10 @@ const myConf2: Config = {
     HttpClientModule
   ],
   providers: [
+    ConfigService,
+    {provide: APP_INITIALIZER, useFactory: initApp,
+      multi: true, deps: [ConfigService]},
+    {provide: HTTP_INTERCEPTORS, useClass: BbhInterceptorService, multi: true},
     {provide: TableDataService, useClass: TableDataService},
     {provide: ConfigToken, useValue: myConf, multi: true},
     {provide: ConfigToken, useValue: myConf2, multi: true},
