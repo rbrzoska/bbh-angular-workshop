@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { Product } from './Product';
+import { Product } from '../products/Product';
 
 @Injectable()
 export class TableDataService {

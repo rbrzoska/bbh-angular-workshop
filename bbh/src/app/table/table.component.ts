@@ -1,10 +1,10 @@
 import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
-import { Product } from '../Product';
-import { ColumnComponent } from '../column/column.component';
-import { TableDataSource } from '../table-data-source';
+import { Product } from '../products/Product';
+import { ColumnComponent } from './column.component';
+import { TableDataSource } from './table-data-source';
 import { Observable } from 'rxjs/Observable';
 import { map, share } from 'rxjs/operators';
-import { Page } from '../page';
+import { Page } from './page';
 
 @Component({
   selector: 'bbh-table',

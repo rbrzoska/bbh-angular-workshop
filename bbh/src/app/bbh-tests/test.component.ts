@@ -6,7 +6,7 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import { TestChildComponent } from '../test-child/test-child.component';
+import { TestChildComponent } from './test-child/test-child.component';
 
 @Component({
   selector: 'bbh-test',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../Product';
-import { TableDataService } from '../table-data.service';
-import { TableDataSource } from '../table-data-source';
+import { Product } from './Product';
+import { TableDataService } from '../table/table-data.service';
+import { TableDataSource } from '../table/table-data-source';
 
 @Component({
   selector: 'bbh-table-demo',

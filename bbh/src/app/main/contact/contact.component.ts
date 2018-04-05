@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, Optional, SkipSelf } from '@angular/core';
-import { NotificationsService } from '../notifications.service';
-import { BaseNotificationService, Config, ConfigToken } from '../tokens';
-import { BbhInterceptorService } from '../bbh-interceptor.service';
+import { NotificationsService } from '../../notifications/notifications.service';
+import { BaseNotificationService, Config, ConfigToken } from '../../core/tokens';
+import { BbhInterceptorService } from '../../core/bbh-interceptor.service';
 
 @Component({
   selector: 'bbh-contact',
