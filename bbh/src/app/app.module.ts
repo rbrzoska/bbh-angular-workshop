@@ -57,6 +57,7 @@ const routes: Routes = [
     HttpClientModule
   ],
   providers: [TableDataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NotificationComponent]
 })
 export class AppModule { }
