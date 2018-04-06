@@ -10,4 +10,4 @@ export class VatPipe implements PipeTransform {
 
 var getVat = memoize((value) => {
   return `${value} + ${(value * 0.23).toFixed(2)} VAT`
-});
+})

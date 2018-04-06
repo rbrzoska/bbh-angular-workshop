@@ -18,11 +18,6 @@ export class TableDataService {
       })
   }
 
-  getData2<T>(url: string, page: number = 1): Observable<T[]> {
-    return this.http
-      .get<T[]>('http://localhost:3000' + url)
-  }
-
 
 
 }
