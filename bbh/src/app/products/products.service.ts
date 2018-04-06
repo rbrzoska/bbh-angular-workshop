@@ -17,4 +17,7 @@ export class ProductsService {
         observe: 'response'
       })
   }
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>('http://localhost:3000/products');
+  }
 }

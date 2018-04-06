@@ -56,9 +56,12 @@
   "defaults": {
     "styleExt": "css",
     "component": {
+      "spec": true,
       "inlineStyle": true,
-      "inlineTemplate": true,
-      "spec": true
+      "inlineTemplate": true
+    },
+    "schematics": {
+      "collection": "@ngrx/schematics"
     }
   }
 }

@@ -17,4 +17,5 @@ import { TableModule } from '../table/table.module';
   ],
   declarations: [TableDemoComponent]
 })
-export class ProductsModule { }
+export class ProductsModule {
+}
