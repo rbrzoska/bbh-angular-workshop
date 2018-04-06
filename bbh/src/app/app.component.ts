@@ -8,6 +8,7 @@ import { Config, ConfigToken } from './core/tokens';
     <a routerLink="/contact">Contact</a>
     <a routerLink="/products">Table</a>
     <a routerLink="/tests">Tests</a>
+    <a routerLink="/wizard">Wizard</a>
     <router-outlet></router-outlet>
     
     <bbh-notifications-container></bbh-notifications-container>

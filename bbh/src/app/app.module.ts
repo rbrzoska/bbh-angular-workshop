@@ -10,10 +10,12 @@ import { TableModule } from './table/table.module';
 import { MainModule } from './main/main.module';
 import { TestComponent } from './test/test.component';
 import { TestDirective } from './test.directive';
+import { WizardDemoComponent } from './main/wizard-demo/wizard-demo.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'contact', component: ContactComponent},
+  {path: 'wizard', component: WizardDemoComponent},
   {path: 'products', loadChildren: 'app/products/products.module#ProductsModule'},
   {path: 'tests', loadChildren: 'app/bbh-tests/bbh-tests.module#BbhTestsModule'},
   {path: '**', redirectTo: '/'}
