@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { TableDemoComponent } from './products/table-demo.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { CoreModule } from './core/core.module';
 import { NotificationsModule } from './notifications/notifications.module';
